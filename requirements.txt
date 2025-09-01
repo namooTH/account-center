@@ -1,0 +1,9 @@
+discord.py @ git+https://github.com/Rapptz/discord.py
+pyyaml
+aiohttp
+aiohttp_session
+asyncinit
+aiosqlite
+cryptography
+jinja2
+discord-oauth2.py

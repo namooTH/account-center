@@ -1,0 +1,5 @@
+key
+config.json
+env/
+__pycache__/
+accounts.db

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .password-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            text-align: center;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 250px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            background-color: #4CAF50;
+            color: white;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .msg {
+            margin-top: 10px;
+            color: #555;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi {{ username }}!</h1>
+    <div class="password-box">
+        <input type="text" id="password" value="{{ password }}" readonly>
+        <button onclick="copyPassword()">Copy Password</button>
+        <div id="copiedMsg" class="msg"></div>
+    </div>
+    <script>
+        function copyPassword() {
+            const input = document.getElementById("password");
+            input.select();
+            input.setSelectionRange(0, 99999); // for mobile support
+            navigator.clipboard.writeText(input.value).then(() => {
+                document.getElementById("copiedMsg").textContent = "Copied!";
+            });
+        }
+    </script>
+</body>
+</html>
