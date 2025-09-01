@@ -66,7 +66,7 @@ class yourenobody(commands.Cog):
             if not account:
                 token = secrets.token_urlsafe(512)
                 await self.account_manager.add_account(Account(id=identify["id"], token=token, username=identify["username"], password=secrets.token_urlsafe(24)))
-                await self.account_manager.save_copyparty(self.bot.copypartyconf, self.bot.copypartygroup)
+                await self.account_manager.save_copyparty(self.bot.copyparty_conf_path, self.bot.copyparty_group)
                 subprocess.call("./reload_copyparty.sh", shell=True)
             else:
                 token = account.token
@@ -94,5 +94,5 @@ async def setup(bot):
     await bot.add_cog(command)
     runner = web.AppRunner(command.app)
     await runner.setup()
-    site = web.TCPSite(runner, host='0.0.0.0', port=6073)
+    site = web.TCPSite(runner, host=bot.host, port=bot.port)
     await site.start()

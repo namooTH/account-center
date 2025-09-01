@@ -27,9 +27,9 @@ class Bot(commands.Bot):
         # this will be accessible through out the whole bot
         with open("config.json", "r") as file: self.config = json.load(file)
         self.token = self.config["token"]
-        
-        self.copypartyconf = self.config["copyparty-userconf"]
-        self.copypartyconf = self.config["copyparty-group"]
+
+        self.copyparty_conf_path = self.config["copyparty-userconf"]
+        self.copyparty_group = self.config["copyparty-group"]
         
         self.host = self.config["host"]
         self.port = self.config["port"]
